@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body{
+    margin-top: 50px;
+    background-color: rgb(147, 147, 147);
+}
+P{
+    font-size: 50px;
+    color: white;
+    text-shadow:2px 8px 8px black ;
+}
+div{
+    width: 300px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.491);
+    box-shadow: 0px 0px 5px black;
+    border-radius: 15px;
+}
+#heading{
+    font-size: 40px;
+    text-shadow: 0px 0px 5px black;
+    color: white;
+}
+#calc{
+    margin-top: 20px;
+    width: 80%;
+    height: 30px;
+    background-color: transparent;
+    color: white;
+    font-size: 30px;
+    box-shadow: 2px 2px 2px black, -2px -2px -2px black;
+}
+.i1{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 8px;
+    width: 40px;
+    height: 40px;
+    color: white;
+    background-color: transparent;
+    border-radius: 5px;
+    border-width: 4px;
+    font-size: 20px;
+    box-shadow: 0px 0px 5px black;
+}
+.i1:hover
+{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 8px;
+    width: 40px;
+    height: 40px;
+    color: rgb(4, 4, 4);
+    background-color: white;
+    border-radius: 5px;
+    border-width: 4px;
+    font-size: 20px;
+    box-shadow: 0px 0px 5px rgb(255, 255, 255);
+}
+#c{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 8px;
+    width: 80%;
+    height: 40px;
+    color: white;
+    background-image: linear-gradient(45deg,black,red);
+    border-radius: 5px;
+    border-width: 4px;
+    font-size: 20px;
+    box-shadow: 0px opx 5px black;
+    letter-spacing: 5px;
+}
+#c:hover{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 8px;
+    width: 80%;
+    height: 40px;
+    color: rgb(0,0, 0);
+    background-image: linear-gradient(245deg,rgb(0, 0, 0),rgb(255, 0, 0));
+    border-radius: 5px;
+    border-width: 4px;
+    font-size: 20px;
+    box-shadow: 0px opx 5px rgb(255, 255, 255);
+    letter-spacing: 5px;
+}
+    </style>
+</head>
+<body >
+    <center>
+        <p>Calculator</p>
+    <div>
+        <input id="calc" type="text" name="Answer">
+        <br><br>
+        <input class="i1" type="button" value="1" onclick="appendToInput('1')">
+        <input class="i1" type="button" value="2" onclick="appendToInput('2')">
+        <input class="i1" type="button" value="3" onclick="appendToInput('3')">
+        <input class="i1" type="button" value="+" onclick="appendToInput('+')">
+        <br><br>
+        <input class="i1" type="button" value="4" onclick="appendToInput('4')">
+        <input class="i1" type="button" value="5" onclick="appendToInput('5')">
+        <input class="i1" type="button" value="6" onclick="appendToInput('6')">
+        <input class="i1" type="button" value="-" onclick="appendToInput('-')">
+        <br><br>
+        <input class="i1" type="button" value="7" onclick="appendToInput('7')">
+        <input class="i1" type="button" value="8" onclick="appendToInput('8')">
+        <input class="i1" type="button" value="9" onclick="appendToInput('9')">
+        <input class="i1" type="button" value="*" onclick="appendToInput('*')">
+        <br><br>
+        <input class="i1" type="button" value="/" onclick="appendToInput('/')">
+        <input class="i1" type="button" value="0" onclick="appendToInput('0')">
+        <input class="i1" type="button" value="%" onclick="appendToInput('%')">
+        <input class="i1" type="button" value="=" onclick="calculate()">
+        <br><br>
+        <input id="c" type="button" value="clear" onclick="clearInput()">
+    </div>
+</body>
+</div>
+</center>
+<script>
+    function appendToInput(value) {
+        document.getElementById('calc').value += value;
+    }
+
+    function clearInput() {
+        document.getElementById('calc').value = '';
+    }
+
+    function calculate() {
+        const input = document.getElementById('calc').value;
+        try {
+            const result = eval(input);
+            document.getElementById('calc').value = result;
+        } catch (error) {
+            document.getElementById('calc').value = 'Error';
+        }
+    }
+</script>
+</html>
