@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <style>
+        body {
+            font-family: 'Comfortaa', 'Times New Roman', Times, serif;
+            line-height: 1.5;
+            background-color: #D8B4F8;
+            width: 500px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        form {
+            background: white;
+            padding: 2.5rem 2.5rem;
+            border-radius: 2rem;
+            width: 500px;
+            margin: auto;
+        }
+
+        .input-headings {
+            margin: 0 auto 1.25rem auto;
+            padding: 0.25rem;
+        }
+
+        .form-inputs {
+            display: block;
+            width: 90%;
+            height: 2rem;
+            padding: 0.25rem 0.75rem;
+            background-color: #fff;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+        }
+
+        .submit-button {
+            width: 95%;
+            padding: 0.75rem;
+            background: #333;
+            color: white;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .reset-button {
+            width: 95%;
+            padding: 0.75rem;
+            background: #888;
+            color: white;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+
+        /* Styles for the popup */
+        #popup {
+            display: none;
+            /* background: rgba(0, 0, 0, 0.7); */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .popup-content {
+
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Survey Form</h1>
+
+    <form id="survey-form">
+        <div class="input-headings">
+            <label for="first-name">First Name</label>
+            <input id="first-name" type="text" name="first-name" placeholder="First Name" class="form-inputs" required>
+
+            <label for="last-name">Last Name</label>
+            <input id="last-name" type="text" name="last-name" placeholder="Last Name" class="form-inputs" required>
+
+            <label for="date-of-birth">Date of Birth</label>
+            <input id="date-of-birth" type="date" name="date-of-birth" class="form-inputs" required>
+
+            <label for="country">Country</label>
+            <select id="country" class="form-inputs" required>
+                <option value="india">India</option>
+                <option value="usa">USA</option>
+                <!-- Add more countries here -->
+            </select>
+
+            <label for="gender">Gender</label>
+            <div>
+                <input id="male" type="radio" name="gender" value="male">
+                <label for="male">Male</label>
+
+                <input id="female" type="radio" name="gender" value="female">
+                <label for="female">Female</label>
+            </div>
+
+            <label for="profession">Profession</label>
+            <input id="profession" type="text" name="profession" placeholder="Profession" class="form-inputs" required>
+
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" placeholder="Email" class="form-inputs" required>
+
+            <label for="mobile-number">Mobile Number</label>
+            <input id="mobile-number" type="tel" name="mobile-number" placeholder="Mobile Number" class="form-inputs"
+                required>
+
+
+            <input id="submit" type="submit" value="Submit" class="submit-button">
+            <input id="reset" type="reset" value="Reset" class="reset-button">
+
+            <div id="popup">
+                <div class="popup-content" id="pop">
+                    <h2>Submitted Values</h2>
+                    <p>First Name: <span id="popupFirstName"></span></p>
+                    <p>Last Name: <span id="popupLastName"></span></p>
+                    <p>Date of Birth: <span id="popupDob"></span></p>
+                    <p>Country: <span id="popupCountry"></span></p>
+                    <p>Gender: <span id="popupGender"></span></p>
+                    <p>Profession: <span id="popupProfession"></span></p>
+                    <p>Email: <span id="popupEmail"></span></p>
+                    <p>Mobile Number: <span id="popupMobile"></span></p>
+                    <button id="closePopupBtn">Close</button>
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+
+    <script>
+
+        let form = document.getElementById('survey-form')
+        // console.log(form);
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let pop = document.getElementById('popup')
+            pop.style.display = 'block';
+            let firstName = document.getElementById('popupFirstName')
+            let lastName = document.getElementById('popupLastName')
+            let dob = document.getElementById('popupDob')
+            let country = document.getElementById('popupCountry')
+            let gender = document.getElementById('popupGender')
+            let profession = document.getElementById('popupProfession')
+            let email = document.getElementById('popupEmail')
+            let mobile = document.getElementById('popupMobile')
+
+            let button = document.getElementById('closePopupBtn')
+            console.log(button);
+
+
+            firstName.textContent = document.getElementById('first-name').value
+            lastName.textContent = document.getElementById('last-name').value
+            dob.textContent = document.getElementById('date-of-birth').value
+            country.textContent = document.getElementById('country').value
+            gender.textContent = document.getElementById('male').value
+            gender.textContent = document.getElementById('female').value
+
+            profession.textContent = document.getElementById('profession').value
+            email.textContent = document.getElementById('email').value
+            mobile.textContent = document.getElementById('mobile-number').value
+
+            button.addEventListener('click', function () {
+
+                document.getElementById('pop').style.display = 'none';
+                location.reload();
+
+            })
+        })
+
+    </script>
+</body>
+
+</html>
